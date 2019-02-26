@@ -96,6 +96,22 @@ func AddPluginFlag(cfg *string, flags *pflag.FlagSet) {
 	flags.StringVarP(cfg, pluginFlag, "p", "e2e", "Describe which plugin's images to interact (Valid plugins are 'e2e').")
 }
 
+// AddE2ERegistryConfigFlag adds a e2eRegistryConfigFlag flag to the provided command.
+func AddE2ERegistryConfigFlag(cfg *string, flags *pflag.FlagSet) {
+	flags.StringVar(
+		cfg, e2eRegistryConfigFlag, "",
+		"Specify a yaml file acting as KUBE_TEST_REPO_LIST, overriding registries for test images.",
+	)
+}
+
+// AddRegistryUsernameFlag adds a username flag for docker registry to the provided command.
+func AddRegistryUsernameFlag(cfg *string, flags *pflag.FlagSet) {
+	flags.StringVar(
+		cfg, "username", "",
+		"Specify a user for authentication to docker registry.",
+	)
+}
+
 // AddSonobuoyConfigFlag adds a SonobuoyConfig flag to the provided command.
 func AddSonobuoyConfigFlag(cfg *SonobuoyConfig, flags *pflag.FlagSet) {
 	flags.Var(
